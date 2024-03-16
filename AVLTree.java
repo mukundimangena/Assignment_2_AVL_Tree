@@ -8,6 +8,18 @@ import java.util.Arrays;
 @SuppressWarnings("rawtypes")
 public class AVLTree extends BinaryTree
 {
+   private int searchCount = 0;
+   private int insertCount = 0;
+
+
+   public int getSearchCount() {
+      return searchCount;
+   }
+   
+    public int getInsertCount() {
+      return insertCount;
+   }
+
    public int height ( BinaryTreeNode node )
    {
       if (node != null)
@@ -74,72 +86,21 @@ public class AVLTree extends BinaryTree
     }
     public BinaryTreeNode insert ( String[] d, BinaryTreeNode node )
     {
-       if (node == null)
-          return new BinaryTreeNode (d, null, null);
-       if (d[0].compareTo(node.data[0]) <= 0)
-          node.left = insert (d, node.left);
-       else
-          node.right = insert (d, node.right);
+       if (node == null){
+         insertCount++; // A comparison was made and if there is no node and we add  a value we add to the insert counter
+          return new BinaryTreeNode (d, null, null);}
+          
+       if (d[0].compareTo(node.data[0]) <= 0){
+          insertCount++;
+          node.left = insert (d, node.left);}
+          
+       else{
+          insertCount++;
+          node.right = insert (d, node.right);}
        return balance (node);
     }
  
-   //*************************************************** */
-    /**
-     * 
-     * @param d data to be inserted into BT
-    * if data is already in the BT it will be ignored 
-    * a search will take place before addition to ensure right positon 
-     * @param node
-     */
-   //  public void insert (String[] d, BinaryTreeNode node )
-   //  {
-   //     if (d[0].compareTo(node.data[0]) <= 0)
-   //     {
-   //        if (node.left == null)
-   //           node.left = new BinaryTreeNode(d, null, null);
-   //        else
-   //           insert (d, node.left);
-   //     }
-   //     else
-   //     {
-   //        if (node.right == null)
-   //           node.right = new BinaryTreeNode(d, null, null);
-   //        else
-   //           insert (d, node.right);
-   //     }
-   //  }
-   //***************************************************************** */
    
-   
-/**
- * implements a search first approach to ensure the data is in the BT and iuf found it deletes and returns nothing
- * @param d
- */
-   //******************************** */
-//  public void delete (String[] d )
-//  {
-//     root = delete (d, root);
-//  }   
-//  public BinaryTreeNode delete ( String[] d, BinaryTreeNode node )
-//  {
-//     if (node == null) return null;
-//     if (d[0].compareTo(node.data[0]) < 0)
-//        node.left = delete (d, node.left);
-//     else if (d[0].compareTo(node.data[0]) > 0)
-//        node.right = delete (d, node.right);
-//     else if (node.left != null && node.right != null )
-//     {
-//        node.data = findMin (node.right).data;
-//        node.right = removeMin (node.right);
-//     }
-//     else
-//        if (node.left != null)
-//           node = node.left;
-//        else
-//           node = node.right;
-//     return node;
-//  }
-//***************************************************** */
 public void delete ( String d )
 {
    root = delete (d, root);
@@ -194,12 +155,15 @@ public BinaryTreeNode delete (String d, BinaryTreeNode node )
    }
    public BinaryTreeNode find ( String d, BinaryTreeNode node )
    {
-      if (d.compareTo (node.data[0]) == 0) 
-         return node;
-      else if (d.compareTo (node.data[0]) < 0)
-         return (node.left == null) ? null : find (d, node.left);
-      else
-         return (node.right == null) ? null : find (d, node.right);
+      if (d.compareTo (node.data[0]) == 0){ 
+         searchCount++;
+         return node;}
+      else if (d.compareTo (node.data[0]) < 0){
+         searchCount++;
+         return (node.left == null) ? null : find (d, node.left);}
+      else{
+         searchCount++;
+         return (node.right == null) ? null : find (d, node.right);}
    }
    
    public void treeOrder ()

@@ -1,4 +1,4 @@
-
+//Created By Mukundi Mangena  
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -53,33 +53,11 @@ public class  GenericsKbAVLApp
     }
 
 
+    System.out.println("The Search count : " + bt.getSearchCount());
+    System.out.println("Insert Counter  : " + bt.getInsertCount());
 
-             
-//       System.out.println ("Inorder : ");
-//       bt.treeOrder ();
-//   System.out.println("  ");
-//   System.out.println("  ");
 
-//   System.out.println("  ");
-//   System.out.println("  ");
-//       System.out.println ("Search isolated organ: "); 
-//       bt.visit(bt.find ("isolated organ"));
 
-      
-//       System.out.println ("Search chatterbox : ");
-//       bt.visit(bt.find ("chatterbox"));
-   
-
-//       bt.delete("criminologist");
-//       bt.delete("albatross");
-//       bt.delete("distinct structure");
-//       bt.delete("chatterbox");
-//       bt.delete("computer hardware");
-//       System.out.println("    ");
-//       System.out.println("    ");
-//       System.out.println("    ");
-//       System.out.println("    ");
-//       bt.treeOrder();
 System.out.println(bt.find("insurance broker").data[1]);
     
    }
