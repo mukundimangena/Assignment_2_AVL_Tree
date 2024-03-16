@@ -5,12 +5,19 @@
 
 import java.util.Arrays;
 
-@SuppressWarnings("rawtypes")
+
 public class AVLTree extends BinaryTree
 {
    private int searchCount = 0;
+   public void setSearchCount(int searchCount) {
+      this.searchCount = searchCount;
+   }
    private int insertCount = 0;
 
+
+   public void setInsertCount(int insertCount) {
+      this.insertCount = insertCount;
+   }
 
    public int getSearchCount() {
       return searchCount;
@@ -87,16 +94,21 @@ public class AVLTree extends BinaryTree
     public BinaryTreeNode insert ( String[] d, BinaryTreeNode node )
     {
        if (node == null){
-         insertCount++; // A comparison was made and if there is no node and we add  a value we add to the insert counter
+          insertCount++;
           return new BinaryTreeNode (d, null, null);}
           
        if (d[0].compareTo(node.data[0]) <= 0){
-          insertCount++;
-          node.left = insert (d, node.left);}
+         insertCount++;
+          node.left = insert (d, node.left);
+          
+          }
           
        else{
           insertCount++;
-          node.right = insert (d, node.right);}
+          node.right = insert (d, node.right);
+          
+          }
+          
        return balance (node);
     }
  

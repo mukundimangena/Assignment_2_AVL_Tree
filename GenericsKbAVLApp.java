@@ -24,12 +24,23 @@ public class  GenericsKbAVLApp
 
                    a  = readFile.nextLine().split("\t");
                    bt.insert(a);
+                //    System.out.println("Insert Counter  : " + bt.getInsertCount());
+                //    bt.setInsertCount(0);
               }
               readFile.close();
       } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
       }
+
+bt.find("criminologist");
+System.out.println("The Search count : " + bt.getSearchCount());
+bt.setSearchCount(0);
+bt.find("riptide");
+System.out.println("The Search count : " + bt.getSearchCount());
+
+ 
+
 /**
  *Seaching for the queries using GenericsKB-queries.txt
  */
@@ -37,13 +48,18 @@ public class  GenericsKbAVLApp
     try (Scanner input = new Scanner(file)){
         while (input.hasNextLine()) {
             String word  = input.nextLine();// Creates a string out of Generics Queries file 
-            if( bt.find(word) ==null){//if find returns null meaning we are unable to find this word in the Data Structure 
+            BinaryTreeNode node = bt.find(word);
+            if( node ==null){//if find returns null meaning we are unable to find this word in the Data Structure 
                 System.out.println(word + " : Not found!!");
+                bt.setSearchCount(0);//reset the search counter to zero to enable each and every insert to have a new 
                 System.out.println("**********************************************************");
 
             }else {
-                //if we return somethinf 
-                System.out.println( word +" : " + bt.find(word).data[1]  + " Score : " + bt.find(word).data[2] );
+                //if 
+              
+                System.out.println( word +" : " + node.data[1]  + " Score : " + node.data[2] );
+                System.out.println("The Search count : " + bt.getSearchCount());
+                bt.setSearchCount(0);
             }
             
         }
@@ -53,12 +69,12 @@ public class  GenericsKbAVLApp
     }
 
 
-    System.out.println("The Search count : " + bt.getSearchCount());
-    System.out.println("Insert Counter  : " + bt.getInsertCount());
+    
+  
 
 
 
-System.out.println(bt.find("insurance broker").data[1]);
+
     
    }
 }
