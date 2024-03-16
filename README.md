@@ -25,12 +25,12 @@ with 10 queries to test that the application can handle queries with both terms 
 terms not in the dataset correctly.
 
 
-#Part 2: Experiment
+**Part 2: Experiment**
 
 Conduct an experiment with GenericsKbAVLApp to compare the performance obtained with
 the theoretical performance of the algorithms.
 
-#Instrumentation
+**Instrumentation**
 
 Add additional code to your program from Part 1 to count the number of comparison operations
 (<, >, =) you are performing in the code. Only count where you are comparing the keys. This is
@@ -49,7 +49,7 @@ method to write the value to a file before the program terminates or print it to
 Note that you will probably need two variables to count the search and insert operations
 separately.
 
-#Experiment
+**Experiment**
 
 Vary the size (n) of the dataset loaded and measure the number of comparison operations in
 the best/average/worst case for different values of n. Use 10 values of n (up to 100 000) that
