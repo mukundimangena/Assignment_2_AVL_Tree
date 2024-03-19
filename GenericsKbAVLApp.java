@@ -72,6 +72,8 @@ static int search(AVLTree tree){
       String[] a = new String[3];
       int[] size = {10,100,1000,10000,50000};
       int[] searchO_n  = new int[5];
+      int[] insertO_n = new int[5];
+      ArrayList<Integer> insertlist= new ArrayList<Integer>();
 
 
       
@@ -87,32 +89,54 @@ static int search(AVLTree tree){
         while (readFile.hasNextLine()) {
             for (int i =0; i<=10 ; i++){
                 bt.insert(readFile.nextLine().split("\t"));
+                insertlist.add(bt.getInsertCount());
+                bt.setInsertCount(0);
+
+
             }
+
             searchO_n[0] = search(bt);
+            insertO_n[0] = Collections.max(insertlist);
          
 
 
             for (int i =11; i<=100 ; i++){
                 bt.insert(readFile.nextLine().split("\t"));
+                insertlist.add(bt.getInsertCount());
+                bt.setInsertCount(0);
+
             }
             searchO_n[1] = search(bt);
+            insertO_n[1] = Collections.max(insertlist);
          
 
             for (int i =101; i<=1000 ; i++){
                 bt.insert(readFile.nextLine().split("\t"));
+                insertlist.add(bt.getInsertCount());
+                bt.setInsertCount(0);
+
             }
             searchO_n[2] = search(bt);
+            insertO_n[2] = Collections.max(insertlist);
          
             for (int i =1001; i<=10000 ; i++){
                 bt.insert(readFile.nextLine().split("\t"));
+                insertlist.add(bt.getInsertCount());
+                bt.setInsertCount(0);
+
             }
             searchO_n[3] = search(bt);
+            insertO_n[3] = Collections.max(insertlist);
          
 
-            while (readFile.hasNextLine()) {
+            while (readFile.hasNextLine()) {//loop through the rest of the file
                 bt.insert(readFile.nextLine().split("\t"));
+                insertlist.add(bt.getInsertCount());
+                bt.setInsertCount(0);
+
             }
              searchO_n[4] = search(bt);
+             insertO_n[4] = Collections.max(insertlist);
          
             
         }
@@ -121,11 +145,14 @@ static int search(AVLTree tree){
       }
 
 System.out.println(Arrays.toString(searchO_n));
+System.out.println(Arrays.toString(insertO_n));
+
 
      
 
 
-
+//in order to get the array of the O(n) of insertion we will have to take the 
+//maximum value of the insertionCount in the intervals that we have
 
 
 
