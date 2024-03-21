@@ -1,5 +1,6 @@
 #Mukundi Mangena 
-#21
+#21/03/23
+#this code takes the text file created by the java file and seperates the values of the array and uses them to draw out the time complexity of the code
 
 import ast
 import matplotlib.pyplot as plt
