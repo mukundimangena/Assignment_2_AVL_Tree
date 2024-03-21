@@ -7,7 +7,12 @@ import java.util.Arrays;
 
 
 public class AVLTree extends BinaryTree
-{
+{ 
+/**
+ * @param searchCount // we use this to count every time we loop through to find a node in a data structure
+ * @param insertCount // used to count the times we loop thought bt to insert a new node 
+ * getter and setters are also set to ensure that the variable are not accessible globally 
+ */
    private int searchCount = 0;
    public void setSearchCount(int searchCount) {
       this.searchCount = searchCount;
@@ -85,7 +90,12 @@ public class AVLTree extends BinaryTree
    
 
 
- 
+ /**
+  * 
+  * @param d string of the term, statement and score to be added to the bt
+  *the insertion is changed to allow for the key of the node to be the term
+  @param insert count is increment everytime that we use a comparator in the code 
+  */
 
     public void insert(String[] d )
     {
@@ -112,7 +122,10 @@ public class AVLTree extends BinaryTree
        return balance (node);
     }
  
-   
+/**
+ * 
+ * @param d we sure a string for deletion to aid in ease of execution and also the key of the node is a string
+ */
 public void delete ( String d )
 {
    root = delete (d, root);
